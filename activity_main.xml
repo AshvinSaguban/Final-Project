@@ -1,0 +1,30 @@
+package com.example.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.widget.CalendarView;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    CalendarView calendarView;
+    TextView textDate;
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        calendarView = findViewById(R.id.calendarView);
+        textDate = findViewById(R.id.textDate);
+
+
+        calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
+            String date = dayOfMonth + "/" + (month + 1) + "/" + year;
+            textDate.setText("Selected: " + date);
+        });
+    }
+}
